@@ -28,7 +28,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                xcopy dist\inventory D:\Code\Practice\TEST\dep
+                bat "xcopy dist\\inventory D:\\Code\\Practice\\TEST\\dep"
             }
         }
     }
