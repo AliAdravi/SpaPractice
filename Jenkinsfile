@@ -25,5 +25,11 @@ pipeline {
                 bat "npm run test"
             }
         }
+
+        stage('Deploy') {
+            steps {
+                xcopy dist\inventory D:\Code\Practice\TEST\dep
+            }
+        }
     }
 }
