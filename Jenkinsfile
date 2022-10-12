@@ -2,27 +2,17 @@ pipeline {
     agent any
     
     stages {
-        stage('Start') {
-            steps {
-                echo 'Inventory Application Pipeline'
-            }
-        }
-        
         stage('Install:') {
-            steps {
-                bat "npm install"
-            }
+            steps { bat "npm install" }
         }
         
         stage('Build:') {
-            steps {
-                bat "npm run build --production"
-            }
+            steps { bat "npm run build --production" }
         }
         
         stage('Test') {
             steps {
-                bat "npm run test --browsers=ChromeHeadless --watch=false"
+                bat "npm run test:ci"
             }
         }
 
