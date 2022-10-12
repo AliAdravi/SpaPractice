@@ -22,7 +22,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                bat "npm run test"
+                bat "npm run test --browsers=ChromeHeadless --watch=false"
             }
         }
 
