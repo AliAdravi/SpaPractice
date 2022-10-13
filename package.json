@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:iss": "ng build --watch --deploy-url /spa/ --base-href /spa/ ",
+    "build:iis": "ng build --watch=false --deploy-url /spa/ --base-href /spa/ ",
     "watch": "ng build",
     "test": "ng test",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false",
