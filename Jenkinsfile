@@ -18,7 +18,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat "xcopy dist\\inventory D:\\Code\\Practice\\TEST\\dep"
+                bat "rmdir /S /Q "D:\\Code\\Practice\\Deployment\\"
+                bat "xcopy dist\\inventory D:\\Code\\Practice\\Deployment"
             }
         }
     }
