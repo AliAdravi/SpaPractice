@@ -7,7 +7,7 @@ pipeline {
         }
         
         stage('Build:') {
-            steps { bat "npm run build --production" }
+            steps { bat "npm run build:iss" }
         }
         
         stage('Test') {
