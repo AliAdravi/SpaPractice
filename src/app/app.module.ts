@@ -9,6 +9,7 @@ import { HomeComponent } from './features/home/home.component';
   declarations: [
     AppComponent,
     HomeComponent
+    
   ],
   imports: [
     BrowserModule,
