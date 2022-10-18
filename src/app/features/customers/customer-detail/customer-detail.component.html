@@ -1,0 +1,23 @@
+
+<h4>Customer Detail</h4>
+<hr />
+<div class="row" *ngIf="detail">
+    <div class="col-md-4">
+        <div class="card card-height">
+            <div class="card-body">
+                <h6>Customer</h6>
+                <hr />
+              
+              <p class="h6">{{detail.firstName}} {{detail.lastName}}</p>
+              <div>Customer Id: {{detail.customerId}}</div>
+              <div>Custoer Type: {{detail.customerType}}</div>
+            </div>
+          </div>
+    </div>
+    <div class="col-md-4" *ngIf="detail?.addresses">
+        <app-customer-address [addresses]="detail.addresses"></app-customer-address>
+    </div>
+    <div class="col-md-4" *ngIf="detail?.contacts">
+        <app-customer-contact [contacts]="detail.contacts"></app-customer-contact>
+    </div>
+</div>

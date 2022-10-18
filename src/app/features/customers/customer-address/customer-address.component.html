@@ -1,0 +1,26 @@
+
+
+
+<div class="card card-height" >
+    <div class="card-body">
+        <h6>Address</h6>
+        <hr />
+      
+      <div *ngFor="let address of addresses" class="address">
+        <div class="item">
+            <div class="h6 text-primary pointer"
+                (click)="updateAddress(address.addressId)">
+                {{address.street}}, {{address.city}}
+            </div>
+            
+            <div>{{address?.state?.stateName}} {{address.country}}</div>
+            <div>Zip Code: {{address?.zipCode}}</div>
+        </div>
+
+            
+    </div>
+      <div *ngIf="addresses?.length == 0">
+        Add address for the customer!
+      </div>
+    </div>
+  </div>

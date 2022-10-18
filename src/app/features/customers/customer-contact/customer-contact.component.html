@@ -1,0 +1,19 @@
+
+<div class="card card-height" >
+    <div class="card-body">
+        <h6>Contacts</h6>
+        <hr />
+      
+      <div *ngFor="let contact of contacts"
+        (click)="updteContact(contact.contactId)"
+        class="contact-group">
+        <div class="item">
+            <div><i class="bi bi-envelope"></i> {{contact.email}}</div>
+            <div><i class="bi bi-telephone"></i> {{contact?.phone}}</div>
+        </div>
+      </div>
+      <div *ngIf="contacts?.length == 0">
+        No contact found!
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+
+
+<div class="row">
+    <div class="col-md-3 left-menu v-100">
+        <h4>Customers List</h4>
+        <div class="mb-2">
+            <input type="text" 
+                class="form-control" 
+                placeholder="Search"
+                (keyup.enter)="getCustomers()"
+                [(ngModel)]="search">
+        </div>
+        <div class="col-md-12">
+            <div *ngFor="let cust of customers" class="cust-list" 
+                [class.active]="id == cust.customerId"
+                (click)="loadDetail(cust.customerId)">
+                {{cust.firstName}} {{cust.lastName}}
+            </div>
+        </div>
+    </div>
+    <!-- Customer Detail -->
+    <div class="col-md-9">
+        <app-customer-detail [customerId]="id"></app-customer-detail>
+    </div>
+</div>
+
+

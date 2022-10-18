@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:iis": "ng build --watch=false --deploy-url /spa/ --base-href /spa/ ",
+    "build": "ng build --output-hashing=all",
     "watch": "ng build",
     "test": "ng test",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false",
@@ -23,7 +22,10 @@
     "@angular/platform-browser": "^14.2.6",
     "@angular/platform-browser-dynamic": "^14.2.6",
     "@angular/router": "^14.2.6",
+    "@ngrx/effects": "^14.3.2",
+    "@ngrx/store": "^14.3.2",
     "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.9.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -35,13 +37,13 @@
     "@cypress/schematic": "^2.1.1",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "cypress": "latest",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.6.2",
-    "cypress": "latest"
+    "typescript": "~4.6.2"
   }
 }
