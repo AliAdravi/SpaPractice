@@ -12,11 +12,11 @@ export interface IAuthData {
 }
 
 export interface IUser {
-    id: Number;
+    id: number;
     email: string;
     fullName: string;
     password: string;
-    status: string;
+    status: number;
     token: string;
     refreshToken: string;
 }

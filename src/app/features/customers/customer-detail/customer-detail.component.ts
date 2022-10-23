@@ -11,7 +11,6 @@ export class CustomerDetailComponent implements OnInit {
   
   detail!: ICustomer;
   id!: Number;
-  // @Input() set customerId(value: number);
   @Input() set customerId(value: Number) {
      this.id = value;
      this.getCustomerDetail();

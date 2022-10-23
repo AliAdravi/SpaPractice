@@ -11,21 +11,23 @@ export class CustomerListComponent implements OnInit {
   customers!: ICustomer[];
   id!: Number;
   search: string = 'a';
+  error = '';
   constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.getCustomers();
+    // this.customerService.getCustomers(this.search || '', 1).subscribe(this.getCustomer);
   }
 
   getCustomers(){
-    this.customerService.getCustomers(this.search || '', 1).subscribe(
-      (response: ICustomer[]) => {
+    this.customerService.getCustomers(this.search || '', 1).subscribe({
+      next: (response: ICustomer[]) => {
         this.id = 0;
         this.customers = response;
         if(this.customers && this.customers.length > 0)
           this.id = this.customers[0].customerId;
-      }
-    )
+      },
+      error: (err: Error) => this.error = err.message
+    })
   }
 
   loadDetail = (id: Number) => {

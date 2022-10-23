@@ -1,20 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { ICredential, IUser } from '../models/auth.model';
-import { BaseService } from './base.service';
+import { constants } from './../../assets/constants';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService extends BaseService {
+export class AuthenticationService {
 
   user: IUser |null = null;
-  constructor(private httpClient: HttpClient) {
-    super();
-    if(localStorage.getItem('user') !== null)
-      this.user = JSON.parse(localStorage.getItem('user') || '');
-  }
+  constructor(private httpClient: HttpClient,
+    private router: Router) { }
 
   login(credential: ICredential):Observable<IUser> {
     let headers = new HttpHeaders({
@@ -23,7 +21,7 @@ export class AuthenticationService extends BaseService {
       'Password': credential.password 
     });
     let options = { headers: headers };
-    return this.httpClient.post<IUser>(`${this.basePath}/Authentication/login`, null, options)
+    return this.httpClient.post<IUser>(`${constants.Urls.authentication.login}`, null, options)
       .pipe(map( x => {
         this.maintainSession(x);
         return x;
@@ -36,7 +34,7 @@ export class AuthenticationService extends BaseService {
       'Password': user.password });
     let options = { headers: headers };
     user.password = '';
-    return this.httpClient.post<IUser>(`${this.basePath}/Authentication/register`, user, options);
+    return this.httpClient.post<IUser>(`${constants.Urls.authentication.register}`, user, options);
   }
 
   refreshToken() {
@@ -44,7 +42,7 @@ export class AuthenticationService extends BaseService {
       'Content-Type': 'application/json',
       'RefreshToken': this.getRefreshToken });
     let options = { headers: headers };
-    return this.httpClient.post<IUser>(`${this.basePath}/Authentication/refreshtoken`, null, options)
+    return this.httpClient.post<IUser>(`${constants.Urls.authentication.refreshToken}`, null, options)
       .pipe(map(user => {
         this.maintainSession(user);
         return user.token;
@@ -57,6 +55,7 @@ export class AuthenticationService extends BaseService {
 
   logout() {
     localStorage.clear();
+    this.router.navigate(["/"]);
   }
 
   private maintainSession(user: IUser) : void {

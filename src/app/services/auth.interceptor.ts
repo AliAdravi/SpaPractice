@@ -19,6 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthenticationService) {}
 
   addToken(request: HttpRequest<unknown>, token: string = this.authService.getToken): HttpRequest<unknown> {
+    if(!token) return request;
     var tokenHeader = request.clone({
       headers: request.headers.set('Authorization', `Bearer ${token}`)
     });
@@ -33,8 +34,6 @@ export class AuthInterceptor implements HttpInterceptor {
         default:
           return throwError(() => error);
       }
-      
-      return throwError(() => error);
     }));
   }
 

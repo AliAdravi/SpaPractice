@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { ICustomer } from '../models/customers.model';
-import { BaseService } from './base.service';
-
+import { constants } from './../../assets/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService extends BaseService {
+export class CustomerService {
 
-  constructor(private httpClient: HttpClient) {
-    super();
-  }
+  constructor(private httpClient: HttpClient) { }
   
   getCustomers(search: string, page:Number) :Observable<ICustomer[]> {
-    return this.httpClient.get<ICustomer[]>(
-        `${this.basePath}/customer/GetCustomers?search=${search}&page=${page}&pageSize=${this.pageSize}`);
+    const body = {
+      "search": "a",
+      "page": 1,
+      "pageSize": 10
+    };
+    return this.httpClient.post<ICustomer[]>(constants.Urls.customer.searh, body);
   }
 
   getCustomerDetail(id: Number) : Observable<ICustomer> {
-    return this.httpClient.get<ICustomer>(
-      `${this.basePath}/customer/getCustomerById/${id}`);
+    return this.httpClient.get<ICustomer>(`${constants.Urls.customer.byId}/${id}`);
   }
+
+
 }
+

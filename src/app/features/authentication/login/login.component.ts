@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../../../models/auth.model';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { select, Store } from '@ngrx/store';
@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
       //   next: (error: string) => this.showError(error)
       // });
     }
-
+    userName = new FormControl('', Validators.required)
   ngOnInit(): void {
+    
     this.createForm();
   }
 

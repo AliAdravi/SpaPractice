@@ -96,10 +96,3 @@ export const  hasError = createSelector(
     getAuthenticationrFeatureState,
     (state:ILoginState) =>  state?.error
 )
-
-
-const test = (payload: any) => {
-    debugger;
-    console.log(payload);
-    return payload.state;
-}
