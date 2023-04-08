@@ -1,0 +1,83 @@
+.hor-row{
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    
+    
+    li {
+        display: inline-block;
+        text-align: center;
+        border: 1px dotted #555;
+        padding: 5px 20px;
+        margin: 20px;
+        width: 150px;
+    }
+}
+
+.mycontainer{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    div { padding: 15px}
+    
+    .header{
+        background-color: darkmagenta;
+        font-size: 30px;
+        color: #fff;
+        padding: 5px 15px;
+        grid-column: span 12;
+    }
+    .left {
+        color:#fff;
+        background-color: black;
+        grid-column: span 2;
+       
+        min-height: 400px;
+        text-align: center;
+    }
+    .content {
+        background-color: rgb(210, 206, 211);
+        grid-column: span 10;
+        overflow-y: auto;
+        max-height: 80vh;
+        color: #333;
+        display: grid;
+
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        grid-template-rows: repeat(auto, 1fr);
+        gap: 10px;
+        div {
+            border: 1px dotted #333;
+            place-items: center;
+        }
+    }
+    .footer {
+        background-color: rgb(43, 95, 141);
+        grid-column: span 12;
+        color: #fff;
+        text-align: right;
+    }
+}
+
+div.resp {
+    div{ padding: 10px; margin: 20px 3px;}
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    .left{
+        background-color: #333;
+        color:#fff;
+        width: clamp(min(10vw, 200px), 1200px ,max(100vw, 100ww));
+        
+    }
+    .center{
+        background-color: rgb(91, 9, 9);
+        color:#fff;
+    }
+    
+    .right{
+        background-color: rgb(32, 9, 91);
+        color:#fff;
+    }
+}

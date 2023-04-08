@@ -1,4 +1,20 @@
 
+<!-- Show custromer with display grid-->
+
+<div class="customer-grid">
+    <div class="row header">
+        <div>Id</div>
+        <div>Type</div>
+        <div>First Name</div>
+        <div>Last</div>
+    </div>
+   <div class="row" *ngFor="let record of customers">
+        <div>{{record?.customerId}}</div>
+        <div>{{record?.customerType}}</div>
+        <div>{{record?.firstName}}</div>
+        <div>{{record?.lastName}}</div>
+   </div> 
+</div>
 
 <div class="row">
     <div class="col-md-3 left-menu v-100">
